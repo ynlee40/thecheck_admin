@@ -3,18 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.6.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "learn-redux": "^1.0.0",
     "react": "^17.0.2",
+    "react-app-polyfill": "^2.0.0",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "NODE_PATH=src cross-env AUTOPREFIXER_GRID=autoplace react-scripts start",
+    "build": "NODE_PATH=src cross-env AUTOPREFIXER_GRID=autoplace react-scripts build",
+    "test": "cross-env AUTOPREFIXER_GRID=autoplace react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -30,9 +33,20 @@
       "not op_mini all"
     ],
     "development": [
+      "ie 11",
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 safari version",
+      "last 1 ie version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.3.1",
+    "cross-env": "^7.0.3",
+    "node-sass": "^4.14.1",
+    "react-datepicker": "^4.2.1",
+    "react-helmet": "^6.1.0",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0"
   }
 }
