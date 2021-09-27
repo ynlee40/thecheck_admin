@@ -1,18 +1,15 @@
-import React,{useEffect, useState} from 'react';
+import React,{useEffect} from 'react';
 import {useDispatch} from "react-redux";
 import {setTitle} from "features/common/SettingSlice";
 import {setSummary} from "features/common/SummarySlick";
 import Head from "components/common/Head";
-import DatePicker from "react-datepicker";
-import ko from 'date-fns/locale/ko';
 import DPickerInput from "components/module/DPickerInput"
 
 const LayoutIncentive = () => {
 	const dispatch = useDispatch();
-	const [startDate, setStartDate] = useState();
-	const [endDate, setEndDate] = useState();
 
 	useEffect(()=>{
+		window.document.getElementsByTagName("body")[0].className = "p_incentive";
 		dispatch(setTitle("THE CHECK 인센티브")); // header 제목
 		dispatch(setSummary({
 			title:"인센티브 등록",
@@ -37,7 +34,7 @@ const LayoutIncentive = () => {
 		})); 
 	}, []);
 	return (
-		<section className="container p_incentive">
+		<section className="container">
 			<Head title="인센티브 Layout | 더체크"/>
 			<div className="right mb20">
 				<button className="btn_xls">다운로드</button>
@@ -69,7 +66,7 @@ const LayoutIncentive = () => {
 				</div>
 			</div>
 			<h2>
-				<span className="step">step 01</span> 시상 이벤트 설정
+				<span className="step">Step 01</span> 시상 이벤트 설정
 			</h2>
 			<div className="col2">
 				<div className="area">
@@ -98,8 +95,7 @@ const LayoutIncentive = () => {
 					</div>
 					<div className="unit bx_ipt_tit date">
 						<strong className="tit">일정</strong>
-						
-						<DPickerInput style="ico w160" placeholder="시작일을 선택하세요"/><em>~</em> <DPickerInput style="ico w160" placeholder="종료일을 선택하세요"/>
+						<DPickerInput classNm="ico w180" placeholder="시작일을 선택하세요"/><em>~</em><DPickerInput classNm="ico w180" placeholder="종료일을 선택하세요"/>
 					</div>
 					<div className="unit bx_ipt_tit">
 						<strong className="tit">초과 달성 시 추가 인센티브</strong>

@@ -46,6 +46,7 @@
 			width: 28px;
 			&:before, &:after{
 				width: 13px;
+				transform: translate(0, -50%) rotate(45deg);
 			}
 		}
 	}
@@ -60,6 +61,12 @@
 		padding-right: 33px;
 		background-position-x: calc(100% - 12px);
 	}
+	&.half{
+		width: calc(50% - 5px);
+		&+.half{
+			margin-left: 10px;
+		}
+	} 
 }
 .react-datepicker{
 	position: relative;

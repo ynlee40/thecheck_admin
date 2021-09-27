@@ -2,15 +2,17 @@ import React, {useEffect} from "react";
 import { useDispatch } from "react-redux";
 import Head from "components/common/Head";
 import { setLayoutOn } from "features/common/SettingSlice";
+import DPickerInput from "components/module/DPickerInput";
+import Select from "components/module/Select";
 import "scss/nonProject/module.scss"; 
 
 const Module = () => {
 	const dispatch = useDispatch();
 	const location = window.location.href;
 	useEffect(()=>{
-		// console.log(this.test1);
-		if (location.indexOf("module") > -1) dispatch(setLayoutOn(false)); 
-		return () => dispatch(setLayoutOn(true));
+		dispatch(setLayoutOn(false));
+		// if (location.indexOf("module") > -1) dispatch(setLayoutOn(false)); 
+		// return () => dispatch(setLayoutOn(true));
 		// window.scrollTo(0, scrollTop); 
 	}, []);
 	return (
@@ -29,6 +31,14 @@ const Module = () => {
 				<article className="i_bx show_flex flex" id="i_bx1">
 					<div className="left">
 						<h2>🎯 스타일 가이드</h2>
+						<h3>🍉 width - 인라인 스타일 대신 사용할 가로값 클래스</h3>
+						<div className="i_cont">
+							5px 간격으로 30px ~ 300px 까지 클래스(w30~300) 있습니다<br/>
+							<div className="code mt10">
+								{'<div className="w150">...'}<br/> 
+								{'<input className="w200"/>'}<br/>
+							</div>
+						</div>
 						<h3>🍉 margin</h3>
 						<div className="i_cont">
 							5px 간격으로 5px ~ 50px 까지 클래스(m*5~50)가 있습니다<br/>
@@ -117,79 +127,68 @@ const Module = () => {
 								<button className="btn_search">검색</button>
 							</div>
 							<h4>ex)</h4>
-<pre><xmp><input type="text" placeholder="입력해주세요!!" style={{"width": "200px"}}/>
-<input type="text" className="big" placeholder="입력해주세요!!"/>
-<div className="bx_ipt" style={{"width": "150px"}}>
-	<input type="text" className="ipt_ico" placeholder="입력해주세요!!"/>
-	<button className="btn_search">검색</button>
-</div>
-<div className="bx_ipt big" style={{}}>
-	<input type="text" className="ipt_ico" placeholder="입력해주세요!!"/>
-	<button className="btn_search">검색</button>
-</div>
-</xmp></pre>
+							<div className="code">
+								{'<input type="text" placeholder="입력해주세요!!" style={{"width": "200px"}}/>'}<br/>
+								{'<input type="text" className="big" placeholder="입력해주세요!!"/>'}<br/>
+								{'<div className="bx_ipt" style={{"width": "150px"}}>'}<br/>
+								<em className="mr30"></em>{'<input type="text" className="ipt_ico" placeholder="입력해주세요!!"/>'}<br/>
+								<em className="mr30"></em>{'<button className="btn_search">검색</button>'}<br/>
+								{'</div>'}<br/>
+								{'<div className="bx_ipt big" style={{}}>'}<br/>
+								<em className="mr30"></em>{'<input type="text" className="ipt_ico" placeholder="입력해주세요!!"/>'}<br/>
+								<em className="mr30"></em>{'<button className="btn_search">검색</button>'}<br/>
+								{'</div>'}<br/>
+							</div>
 						</div>
 						<h3>🍉 select</h3>
 						<div className="i_cont">
-							<span className="noti">slct_tit이 비워져 있으면 select값으로 세팅됩니다.</span>
-							<span className="noti">- 가로 크기는 기본 100px입니다. 다른 크기를 원하시면 인라인 스타일로 지정해서 사용 가능 합니다.</span>
+							<span className="noti">옵션에 on값이 비워져 있으면 select값으로 세팅됩니다.</span>
+							<span className="noti">title 값이 없으면 첫번째 옵션으로 선택됩니다.</span>
+							<span className="noti">- 가로 크기는 기본 100px입니다. 다른 크기를 원하시면 w가로값(ex : w150) 클래스 추가해서 사용 가능 합니다.</span>
 							<p>.big : 높이 40px</p>
-							<div className="slct" style={{"width": "100px"}}>
-								<div className="slct_tit"></div>
-								<ul className="slct_cont">
-									<li className="select">전체</li>
-									<li>옵션1</li>
-									<li>옵션2</li>
-									<li>옵션3</li>
-									<li>옵션4</li>
-									<li>옵션3</li>
-									<li>옵션4</li>
-								</ul>
+							<Select list={[
+								{name: "옵션1",},
+								{name: "옵션2"},
+								{name: "옵션3"},
+								{name: "옵션4", on: true},
+								{name: "옵션5"},
+							]} />
+							<Select classNm="w170" title="옵션을 선택해주세요" list={[
+								{name: "옵션1", on: true},
+								{name: "옵션2"},
+								{name: "옵션3"},
+								{name: "옵션4"},
+								{name: "옵션5"},
+							]} />
+							<Select classNm="w100" title="과일을 선택해주세요" list={[
+								{name: "사과", on: true},
+								{name: "배"},
+								{name: "귤"},
+								{name: "포도"},
+								{name: "망고"},
+							]} />
+							<Select classNm="w150 big"  list={[
+								{name: "옵션1"},
+								{name: "옵션2"},
+								{name: "옵션3"},
+								{name: "옵션4"},
+								{name: "옵션5"},
+							]} /> 
+							<div className="code mt15">
+								{'<Select classNm="w170" title="옵션을 선택해주세요" list={['}<br/>
+								<em className="mr30"></em>{'{name: "옵션1"},'}<br/>
+								<em className="mr30"></em>{'{name: "옵션2"},'}<br/>
+								<em className="mr30"></em>{'{name: "옵션3"},'}<br/>
+								<em className="mr30"></em>{'{name: "옵션4"},'}<br/>
+								<em className="mr30"></em>{'{name: "옵션5"},'}<br/>
+								{']} />'}<br/>
+								{'<Select classNm="w200" list={['}<br/>
+								<em className="mr30"></em>{'{name: "옵션1", on: true},'}<br/>
+								<em className="mr30"></em>{'{name: "옵션2"},'}<br/>
+								<em className="mr30"></em>{'...'}<br/>
+								{'<Select classNm="w100 big" list={['}<br/>
+								<em className="mr30"></em>{'...'}<br/>
 							</div>
-							<div className="slct" style={{"width": "200px"}}>
-								<div className="slct_tit">과일을 선택해주세요.</div>
-								<ul className="slct_cont">
-									<li className="select">전체!</li>
-									<li>사과</li>
-									<li>바나나</li>
-									<li>망고</li>
-									<li>포도</li>
-									<li>애플망고</li>
-									<li>배</li>
-								</ul>
-							</div>
-							<div className="slct big" style={{"width": "150px"}}>
-								<div className="slct_tit"></div>
-								<ul className="slct_cont">
-									<li className="select">전체</li>
-									<li>옵션1</li>
-									<li>옵션2</li>
-									<li>옵션3</li>
-									<li>옵션4</li>
-									<li>옵션3</li>
-									<li>옵션4</li>
-								</ul>
-							</div>
-<pre><xmp><div className="slct" style={{"width" : "100px"}}>
-<div className="slct_tit"></div>
-<ul className="slct_cont">
-	<li className="select">전체</li>
-	<li>옵션1</li>
-	...
-</ul>
-</div>
-<div className="slct" style={{"width": "200px"}}>
-<div className="slct_tit">과일을 선택해주세요.</div>
-<ul className="slct_cont">
-	<li className="select">전체!</li>
-	<li>사과</li>
-	...
-</ul>
-</div>
-<div className="slct big" style={{"width": "200px"}}>
-	...
-</div>
-</xmp></pre>
 						</div>
 						<h3>
 							🍉 checkbox
@@ -200,35 +199,37 @@ const Module = () => {
 
 							<div className="bx_chk white"><input type="checkbox" name="" id="chk3"/><label className="chk" htmlFor="chk3">체크1</label></div>
 							<div className="bx_chk white big"><input type="checkbox" name="" id="chk4"/><label className="chk" htmlFor="chk4">체크2</label></div>
-<pre><xmp><div className="bx_chk">
-<input type="checkbox" name="" id="chk1"/>
-<label className="chk" htmlFor="chk1">체크1</label>
-</div>
-<div className="bx_chk big">...</div>
-<div className="bx_chk white">...</div>
-<div className="bx_chk white big">...</div>
-</xmp></pre>
+							<div className="code mt15">
+								{'<div className="bx_chk">'}<br/>
+									<em className="mr30"></em>{'<input type="checkbox" name="" id="chk1"/>'}<br/>
+									<em className="mr30"></em>{'<label className="chk" htmlFor="chk1">체크1</label>'}<br/>
+								{'</div>'}<br/>
+								{'<div className="bx_chk big">...</div>'}
+								{'<div className="bx_chk white">...</div>'}
+								{'<div className="bx_chk white big">...</div>'}
+							</div>
 						</div>
 						<h3>
 							🍉 radiobox
 						</h3>
 						<div className="i_cont">
 							<div className="bx_radio"><input type="radio" name="radio" id="radio1"/><label className="radio" htmlFor="radio1">체크1</label></div>
-							<div className="bx_radio mr20"><input type="radio" name="radio" id="radio2"/><label className="radio" htmlFor="radio2">체크2</label></div>
+							<div className="bx_radio"><input type="radio" name="radio" id="radio2"/><label className="radio" htmlFor="radio2">체크2</label></div>
 
 							<div className="bx_radio white"><input type="radio" name="radio1" id="radio3"/><label className="radio" htmlFor="radio3">병아리</label></div>
-							<div className="bx_radio white mr20"><input type="radio" name="radio1" id="radio4"/><label className="radio" htmlFor="radio4">닭</label></div>
+							<div className="bx_radio white"><input type="radio" name="radio1" id="radio4"/><label className="radio" htmlFor="radio4">닭</label></div>
 
 							<div className="bx_radio big"><input type="radio" name="radio2" id="radio5"/><label className="radio" htmlFor="radio5">뮤지컬</label></div>
 							<div className="bx_radio big"><input type="radio" name="radio2" id="radio6"/><label className="radio" htmlFor="radio6">락페스티벌</label></div>
-<pre><xmp><div className="bx_radio">
-<input type="radio" name="radio" id="radio1"/>
-<label className="radio" htmlFor="radio1">체크1</label>
-</div>
-<div className="bx_radio big">...</div>
-<div className="bx_radio white">...</div>
-<div className="bx_radio white big">...</div>
-</xmp></pre>
+							<div className="code">
+								{'<div className="bx_radio">'}<br/>
+									<em className="mr30"></em>{'<input type="radio" name="radio" id="radio1"/>'}<br/>
+									<em className="mr30"></em>{'<label className="radio" htmlFor="radio1">체크1</label>'}<br/>
+								{'</div>'}<br/>
+								{'<div className="bx_radio big">...</div>'}<br/>
+								{'<div className="bx_radio white">...</div>'}<br/>
+								{'<div className="bx_radio white big">...</div>'}
+							</div>
 						</div>
 					</div>
 					<div className="right">
@@ -237,17 +238,21 @@ const Module = () => {
 							<h4>input text 타입에 <strong>ipt_date</strong> 클래스를 추가해주세요.</h4>
 							<span className="noti">- 가로 크기는 기본 100px입니다. 다른 크기를 원하시면 인라인 스타일로 지정해서 사용 가능 합니다.</span>
 							<span className="noti">- 달력은 입력이 안되게 input readOnly 추가 해주세요 </span>
-							<input type="text" autoComplete='off' readOnly className="ipt_date"/> ~ <input type="text" autoComplete='off' readOnly className="ipt_date"/>
+							<div className="mb15">
+								<DPickerInput classNm="" placeholder=""/>
+							</div>
+							<div className="mb15">
+								<DPickerInput classNm="big ico" placeholder="날짜를 입력해주세요"/>
+							</div>
 							<h4>추가 가능한 스타일</h4>
 							<p>.big : 높이 40px</p>
-							<p>.ico_calendar : 달력 아이콘 노출<br/><input type="text" className="ipt_date ico_calendar"/> <input type="text" className="ipt_date ico_calendar big"/></p>
-							<p>.big_calendar : 큰 달력<br/><input type="text" className="ipt_date big_calendar"/></p>
+							<p>.ico : 달력 아이콘 노출</p>
 							<h4>ex)</h4>
-<pre><xmp><input type="text" autoComplete='off' readOnly className="ipt_date"/>
-<input type="text" autoComplete='off' readOnly className="ipt_date big_calendar"/>
-<input type="text" autoComplete='off' readOnly 
-className="ipt_date big_calendar ico_calendar big"/>
-</xmp></pre>
+							<div className="code">
+								{'<DPickerInput>'}<br/>
+								{'<DPickerInput classNm="ico" placeholder=""/>'}<br/>
+								{'<DPickerInput classNm="big ico" placeholder="날짜를 입력해주세요"/>'}
+							</div>
 						</div>
 						<h3 >
 							🍉 button
@@ -256,29 +261,36 @@ className="ipt_date big_calendar ico_calendar big"/>
 							<h4>basic</h4>
 							<p>.btn : <button className="btn">조회</button></p>
 							<h4>size</h4>
-							<p>.btn.sm : <button className="btn sm">조회</button></p>
-							<p>.btn.sm : <button className="btn big">조회</button></p>
+							<p>.sm : <button className="btn sm">조회</button></p>
+							<p>.big : <button className="btn big">조회</button></p>
+							<div className="code">
+								{'<button className="btn sm">조회</button>'}<br/>
+								{'<button className="btn big">조회</button>'}<br/>
+							</div>
 							<h4>color</h4>
-							<p>.btn.blue_line : <button className="btn blue_line">조회</button></p>
-							<p>.btn.blue_bg : <button className="btn blue_bg">지급하기</button></p>
-							<p>.btn.dis : <button className="btn dis">조회</button></p>
-							<p>.btn.grean : <button className="btn grean">이전지급내역</button></p>
-							<p>.btn.grean_line : <button className="btn grean_line">이전지급내역</button></p>
+							<p>.blue_line : <button className="btn blue_line">조회</button></p>
+							<p>.blue_bg : <button className="btn blue_bg">지급하기</button></p>
+							<p>.dis : <button className="btn dis">조회</button></p>
+							<p>.grean : <button className="btn grean">이전지급내역</button></p>
+							<p>.grean_line : <button className="btn grean_line">이전지급내역</button></p>
+							<div className="code">
+								{'<button className="btn blue_line">조회</button>'}<br/>
+								{'<button className="btn dis">조회</button>'}<br/>
+								{'<button className="btn blue_line sm">조회</button>'}<br/>
+								...
+							</div>
 							<h4>ico</h4>
-							<p>.btn.grean.ico_down : <button className="btn grean ico_down">검색필터 보기</button></p>
-							<p>.btn.grean_line.ico_down : <button className="btn grean_line ico_down">검색필터 보기</button></p>
+							<p>.grean.ico_down : <button className="btn grean ico_down">검색필터 보기</button></p>
+							<p>.grean_line.ico_down : <button className="btn grean_line ico_down">검색필터 보기</button></p>
+							<div className="code">
+								{'<button className="btn grean ico_down">조회</button>'}<br/>
+								{'<button className="btn grean_line ico_down">조회</button>'}<br/>
+							</div>
 							
 							<h4>etc</h4>
 							<p>.btn_plus : <button className="btn_plus">+</button><em className="mr20"></em>.btn_plus.dis : <button className="btn_plus dis">+</button></p>
 							<p>.btn_minus : <button className="btn_minus">-</button><em className="mr20"></em>.btn_minus.dis : <button className="btn_minus dis">-</button></p>
 							<p className="mb50">.btn_msg : <button className="btn_msg">메모버튼</button><em className="mr20"></em>.btn_txt : <button className="btn_txt">…</button></p>
-							<h3>🍉 박스 스타일</h3>
-							<div className="i_cont">
-								<button className="txt_line">.txt_line : #000000</button>
-								<button className="txt_line orange">.txt_line.orange : #FF6F06</button>
-								<button className="txt_line blue">.txt_line.grean : #005ec0</button>
-								<button className="txt_line red">.txt_line.red : #DF3333</button>
-							</div>
 						</div>
 					</div>
 				</article>

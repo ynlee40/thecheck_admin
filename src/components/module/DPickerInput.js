@@ -14,7 +14,7 @@ const DPickerInput = ({classNm, placeholder}) => {
 	// 	<button type="button" className="ipt_button" onClick={onClick}>{value}</button>
 	// );
 	return (
-		<div className={"datepicker "+classNm}>
+		<div className={"datepicker "+ (classNm!==undefined?classNm:"")}>
 			{date !== undefined && <button type="button" className="btn_reset" onClick={()=>setDate()}/>}
 			<DatePicker selected={date} onChange={(item) => setDate(item)} locale={ko} dateFormat="yyyy-MM-dd" customInput={<CInput ref={ref}/>}/>
 		</div>

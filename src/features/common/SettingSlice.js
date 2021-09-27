@@ -12,7 +12,7 @@ export const SettingSlice = createSlice({
 		setTitle: (state, action) => {
 			state.title = action.payload;
 		},
-		setLayoutOn:  (state, action) => {
+		setLayoutOn:  (state, action) => { //레이아웃 사용 안하는 페이지에 사용
 			state.layoutOn = action.payload;
 		},
 	}

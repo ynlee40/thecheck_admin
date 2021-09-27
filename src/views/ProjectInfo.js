@@ -10,7 +10,7 @@ const ProjectInfo = () => {
 	useEffect(()=>{
 		dispatch(setLayoutOn(false));
 		// if (location.indexOf("projectInfo") > -1) dispatch(setLayoutOn(false)); 
-		return () => dispatch(setLayoutOn(true));
+		// return () => dispatch(setLayoutOn(true));
 	}, []);
 	return (
 		<div className="project_info">
@@ -93,7 +93,7 @@ const ProjectInfo = () => {
 						<td>-</td>
 					</tr>
 					<tr>
-						<td className="subj"><a href="/layout_member" target="_blank">회원 Layout <em className="new">new</em></a></td>
+						<td className="subj"><a href="/layoutmember" target="_blank">회원 Layout <em className="new">new</em></a></td>
 						<td></td>
 						<td>-</td>
 					</tr>

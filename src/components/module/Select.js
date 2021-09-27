@@ -2,7 +2,7 @@ import React, {useState} from "react";
 
 
 
-const Select = ({title, list, width}) => {
+const Select = ({title, list, classNm}) => {
 	const slctList = document.getElementsByClassName("slct");
 	const [slctTitle, setSlctTitle] = useState(title);
 	if(slctTitle === undefined){
@@ -13,6 +13,10 @@ const Select = ({title, list, width}) => {
 				return;
 			}
 		});
+		if(target === "") {
+			list[0].on = "select";
+			target = list[0].name;
+		}
 		setSlctTitle(target);
 	}
 	const toggleSlct = (e) => {
@@ -37,7 +41,8 @@ const Select = ({title, list, width}) => {
 		if (target === null) slctList.forEach(item => item.classList.remove("on"));
 	});
 	return (
-		<div className={"slct "+ width}>
+		<div className={"slct "+ (classNm !== undefined ? classNm : "")}>
+			{/* <div className="slct_tit" onClick={toggleSlct}><span>{slctTitle}</span></div> */}
 			<div className="slct_tit" onClick={toggleSlct}>{slctTitle}</div>
 			<ul className="slct_cont"> 
 				{

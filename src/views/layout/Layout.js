@@ -6,12 +6,9 @@ import Head from "components/common/Head";
 import Select from "components/module/Select";
 import Paginate from "components/common/Paginate";
 import DPickerInput from "components/module/DPickerInput";
-import ko from 'date-fns/locale/ko';
 
 const Layout = () => {
 	const dispatch = useDispatch();
-	const [startDate, setStartDate] = useState();
-	const [endDate, setEndDate] = useState();
 	const tempList = [];
 
 	const temp = <><td className="w70">123</td><td className="w100 txt_red">4019</td><td>더체크프라임</td><td>신한정보통신</td><td>강하늘 팀장</td><td>유연석</td><td>스타벅스</td><td>21/08/04</td><td className="txt_orange">100일</td><td>25,000원</td><td>900,000원</td><td>5,000원</td><td><span className="txt_hlight">2020/03/24</span></td>	<td className="w70"><button className="btn_msg">메모버튼</button></td><td className="w140">-</td></>;
@@ -20,6 +17,7 @@ const Layout = () => {
 	}
 
 	useEffect(()=>{
+		window.document.getElementsByTagName("body")[0].className = "";
 		dispatch(setTitle("THE CHECK 영업관리")); // header 제목
 		dispatch(setSummary({
 			title:"사업 현황",
@@ -102,7 +100,7 @@ const Layout = () => {
 						</div>
 						<div className="unit">
 							<strong>기간</strong>
-							<DPickerInput classNm="" placeholder=""/><em>~</em><DPickerInput placeholder=""/>
+							<DPickerInput/><em>~</em><DPickerInput/>
 						</div>
 						<div className="unit">
 							<button className="btn">조회</button>
@@ -110,8 +108,8 @@ const Layout = () => {
 						</div>
 					</div>
 					<div className="right">
-						<button className="btn_grean fill">당월지급예정</button>
-						<button className="btn_grean">이전지급예정</button>
+						<button className="btn grean fill">당월지급예정</button>
+						<button className="btn grean">이전지급예정</button>
 						<em className="ico_bar"></em>
 						<button className="btn_xls">다운로드</button>
 					</div>

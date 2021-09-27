@@ -260,12 +260,15 @@
 }
 //회원
 .p_member{
-	display: flex;
-	flex-direction: row;
-	align-items: left;
-	box-sizing: border-box;
-	padding: 80px 30px;
 	font-size: calcRem(14px);
+	.container{
+		display: flex;
+		flex-direction: row;
+		align-items: left;
+		box-sizing: border-box;
+		padding: 80px 30px;
+		font-size: 14px;
+	}
 	.area{
 		display: block;
 		margin-right: 30px;
@@ -287,7 +290,6 @@
 	.a_search{
 		width: 240px;
 		flex-shrink: 0;
-		overflow-y: auto;
 		.tit{
 			display: block;
 			margin: 30px 0 5px;
@@ -309,14 +311,13 @@
 		width: 160px;
 		flex-shrink: 0;
 		padding: 30px 0;
-		overflow-y: auto;
 		h3{
 			text-align: center;
 		}
 		li{
 			padding: 9px 5px 7px;
 			text-align: center;
-			font-size: calcRem(15px);
+			font-size: 15px;
 			&.on{
 				background: #CDF4F2;
 			}
@@ -338,16 +339,18 @@
 	}
 } 
 .p_incentive{
-	h2{
-		font-weight: $weight;
-		margin-bottom: 40px;
-		.step{
-			display: inline-block;
-			background: $point;
-			color:$white;
-			padding: 3px 10px 4px;
-			margin-right: 10px;
-			border-radius: 4px;
+	.container{
+		h2{
+			font-weight: $weight;
+			margin-bottom: 40px;
+			.step{
+				display: inline-block;
+				background: $point;
+				color:$white;
+				padding: 5px 10px 4px;
+				margin-right: 10px;
+				border-radius: 4px;
+			}
 		}
 	}
 	.cont{
@@ -416,6 +419,12 @@
 	}
 	.datepicker{
 		height: 40px;
+		.btn_reset{
+			width: 28px;
+			&:before, &:after{
+				width: 13px;
+			}
+		}
 		.ipt_button{
 			padding: 0px 20px 0 15px;
 		}

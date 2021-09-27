@@ -88,6 +88,13 @@
 .pb45{padding-bottom: 45px !important;}
 .pb50{padding-bottom: 50px !important;}
 
+.w30 {width : 30px !important;}
+.w35 {width : 35px !important;}
+.w40 {width : 40px !important;}
+.w45 {width : 45px !important;}
+.w50 {width : 50px !important;}
+.w60 {width : 60px !important;}
+.w65 {width : 65px !important;}
 .w70 {width : 70px !important;}
 .w75 {width : 75px !important;}
 .w80 {width : 80px !important;}
@@ -115,6 +122,27 @@
 .w190 {width : 190px !important;}
 .w195 {width : 195px !important;}
 .w200 {width : 200px !important;}
+.w205 {width : 205px !important;}
+.w205 {width : 205px !important;}
+.w210 {width : 210px !important;}
+.w215 {width : 215px !important;}
+.w220 {width : 220px !important;}
+.w225 {width : 225px !important;}
+.w230 {width : 230px !important;}
+.w235 {width : 235px !important;}
+.w240 {width : 240px !important;}
+.w245 {width : 245px !important;}
+.w250 {width : 250px !important;}
+.w255 {width : 255px !important;}
+.w260 {width : 260px !important;}
+.w265 {width : 265px !important;}
+.w270 {width : 270px !important;}
+.w275 {width : 275px !important;}
+.w280 {width : 280px !important;}
+.w285 {width : 285px !important;}
+.w290 {width : 290px !important;}
+.w295 {width : 295px !important;}
+.w300 {width : 300px !important;}
 
 .txt_white{ color:#ffffff !important;}
 .txt_black { color:#000000 !important;}
@@ -275,19 +303,28 @@ textarea{
 	vertical-align: middle;
 	.slct_tit{
 		position: relative;
+		width: 100%;
 		min-width: 30px;
 		height: 100%;
+		line-height: 30px;
 		padding: 0 22px 0 10px;
 		box-sizing: border-box;
 		background: #FFFFFF;
 		border: 1px solid #A8B7C7;
 		border-radius: 4px;
-		display: flex;
+		// display: flex;
+		display: block;
 		align-items: center;
 		font-size: calcRem(13px);
 		color: $black;
 		cursor: pointer;
+		@include ellipsis;
 		z-index: 1;
+		span{
+			width: 100%;
+			display: inline-block;
+			@include ellipsis;
+		}
 		&:after{
 			content: "";
 			width: 7px;
@@ -350,7 +387,8 @@ textarea{
 	&.big{
 		height: 40px;
 		.slct_tit{
-			padding: 2px 25px 0 20px;
+			padding: 0 25px 0 20px;
+			line-height: 40px;
 			&:after{
 				right: 10px;
 			}
@@ -502,7 +540,7 @@ input[type=text], input[type=password], input[type=tel], input[type=email], inpu
 		display: inline-block;
 		margin: 0 3px;
 	}
-	.btn{
+	button, a{
 		font-size: calcRem(14px);
 		display: inline-block;
 		line-height: 1;
@@ -520,12 +558,14 @@ input[type=text], input[type=password], input[type=tel], input[type=email], inpu
 	}
 	.btn_prev,.btn_next{
 		width: 11px;
+		min-width: auto;
 		height: 100%;
 		display: inline-block;
 		padding: 0;
 		margin: 0 5px;
 		@include blind;
 		position: relative;
+		border: none;
 		&:after{
 			content:"";
 			@include setContent(11px, 11px, block, absolute);
@@ -607,44 +647,69 @@ input[type=text], input[type=password], input[type=tel], input[type=email], inpu
 	border: 1px solid $point;
 	border-radius: 4px;
 	box-sizing: border-box;
+	transition: all 0.2s;
+	&:hover{
+		background: darken($point, 10);
+		border: 1px solid darken($point, 10);
+	}
 	&.blue_line{
 		color: $point;
 		background: $white;
 		border: 1px solid $point;
+		&:hover{
+			color: darken($point, 10);
+			border: 1px solid darken($point, 10);
+		}
 	}
 	&.blue_bg{
 		color: $point;
 		background: #DFFAFF;
 		border: 1px solid $point;
+		&:hover{
+			color: darken($point, 10);
+			border: 1px solid darken($point, 10);
+		}
 	}
 	&.dis{
 		background: $white;
 		color: #979797;
 		border: 1px solid #B0B0B0;
 	}
-	&.gray_line{
-		background: $white;
-		color: #979797;
-		border: 1px solid #B0B0B0;
-	}
 	&.grean{
-		background: $white;
-		border: 1px solid #05C9BF;
-		color: #05C9BF;
-		&.ico_down{
-			font-size: calcRem(12px);
-			padding: 6px 20px 5px 35px;
-			@include bgSvg(fnIcoArrowDown("rgb(5, 201, 191)"), no-repeat, 16px 48%, 15px, $white);
-		}
-	}
-	&.grean_line{
 		background: #05C9BF;
 		border: 1px solid #05C9BF;
-		color: $white;
+		color: $white;;
+		&:hover{
+			background: darken(#05C9BF, 10);
+			border: 1px solid darken(#05C9BF, 10);
+		}
 		&.ico_down{
 			font-size: calcRem(12px);
 			padding: 6px 20px 5px 35px;
 			@include bgSvg(fnIcoArrowDown("rgb(255, 255, 255)"), no-repeat, 16px 48%, 15px, #05C9BF);
+			&:hover{
+				background-color: darken(#05C9BF, 10);
+				border: 1px solid darken(#05C9BF, 10);
+			}
+		}
+	}
+	&.grean_line{
+		background: $white;
+		border: 1px solid #05C9BF;
+		color: #05C9BF;
+		&:hover{
+			color: darken(#05C9BF, 10);
+			border: 1px solid darken(#05C9BF, 10);
+		}
+		&.ico_down{
+			font-size: calcRem(12px);
+			padding: 6px 20px 5px 35px;
+			@include bgSvg(fnIcoArrowDown("rgb(5, 201, 191)"), no-repeat, 16px 48%, 15px, $white);
+			&:hover{
+				color: darken(#05C9BF, 10);
+				border: 1px solid darken(#05C9BF, 10);
+				@include bgSvg(fnIcoArrowDown("rgb(4, 149, 142)"), no-repeat, 16px 48%, 15px, $white);
+			}
 		}
 	}
 	&.sm{
@@ -655,49 +720,6 @@ input[type=text], input[type=password], input[type=tel], input[type=email], inpu
 		font-size: calcRem(16px);
 		padding: 9px 15px 8\px;
 	}
-}
-.btn_grean{
-	font-size: calcRem(12px);
-	border: 1px solid #05C9BF;
-	color: #05C9BF;
-	border-radius: 4px;
-	padding: 6px 20px 5px 20px;
-	background: $white;
-	&.ico{
-		padding: 6px 20px 5px 35px;
-		@include bgSvg(fnIcoArrowDown("rgb(5, 201, 191)"), no-repeat, 16px 50%, 15px, $white);
-	}
-	&.fill{
-		background: #05C9BF;
-		color: $white;
-		&.ico{
-			@include bgSvg(fnIcoArrowDown("rgb(255, 255, 255)"), no-repeat, 16px 50%, 15px, #05C9BF);
-		}
-	}
-	&+.btn_grean{
-		margin-left: 16px;
-	}
-}
-.btn_blue{
-	font-size: calcRem(16px);
-	border-radius: 4px;
-	padding: 7px 20px 6px;
-	border: 1px solid $point;
-	background: #DFFAFF;
-	color: $point;
-	&.fill{
-		background: $point; 
-		color: $white;
-	}
-}
-.btn_gray{
-	font-size: calcRem(16px);
-	border-radius: 4px;
-	padding: 7px 20px 6px;
-	border: 1px solid #B0B0B0;
-	background: $white;
-	color: #979797;
-
 }
 .btn_plus, .btn_minus{
 	@include setContent(32px, 32px);

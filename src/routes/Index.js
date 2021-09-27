@@ -2,6 +2,7 @@ import {Route, Switch} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import Layout from "views/layout/Layout";
 import LayoutIncentive from "views/layout/LayoutIncentive";
+import LayoutMember from "views/layout/LayoutMember";
 import ProjectInfo from "views/ProjectInfo";
 import Module from "views/Module"
 import { toggleAlert } from "features/common/AlertSlice";
@@ -22,6 +23,7 @@ const Routes = () => {
 			<Route path="/module" component={Module}/>
 			<Route path="/layout" component={Layout}/>
 			<Route path="/layoutincentive" component={LayoutIncentive}/>
+			<Route path="/layoutmember" component={LayoutMember}/>
 			<Route path="/*" render={onAlert}/>
 		</Switch>
 	);
