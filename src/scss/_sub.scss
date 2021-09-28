@@ -1,6 +1,8 @@
 .p_board{
 	background: $white; 
-	padding: 30px 80px 60px;
+	.container{
+		padding: 30px 80px 60px;
+	}
 	.tab{
 		box-sizing: border-box;
 		border-bottom: 1px solid #DADADA;
@@ -12,6 +14,7 @@
 			color:#979797;
 			&.on{
 				color:$black;
+				font-weight: $bold;
 			}
 		}
 	}
@@ -23,7 +26,8 @@
 				width: 127px;
 				height: 48px;
 				.slct_tit{
-					padding: 2px 22px 0 20px;
+					padding: 0 20px;
+					line-height: 48px;
 				}
 				.slct_cont{
 					top:47px;

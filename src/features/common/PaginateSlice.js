@@ -7,7 +7,7 @@ const initialState ={
 		start : 1,
 		end : 10,
 		type: "", //type2
-		info: "",
+		info: "", //false, true
 	}
 }
 
@@ -15,21 +15,20 @@ const PaginateSlice = createSlice({
 	name: "paginate",
 	initialState,
 	reducers:{
-		changePage: (state, action) => {
-			state.onIndex = action.payload.onIndex-1;
-			state.prev = action.payload.prev;
-			state.next = action.payload.next;
-			state.start = action.payload.start;
-			state.end = action.payload.end;
-			state.size = action.payload.size || "";
+		setPage: (state, action) => {
+			state.page.onIndex = action.payload.onIndex === undefined ? state.page.onIndex : action.payload.onIndex-1;
+			state.page.prev = action.payload.prev || state.page.prev;
+			state.page.next = action.payload.next || state.page.next;
+			state.page.start = action.payload.start || state.page.start;
+			state.page.end = action.payload.end || state.page.end;
+			state.page.type = action.payload.type || "";
+			state.page.info = action.payload.info || "";
 		}
 	}
 });
 
-export const getPaginate = (state) => {
-	return state.paginate.page;
-};
+export const getPaginate = (state) => state.paginate.page;
 
-export const { changePage } = PaginateSlice.actions;
+export const { setPage } = PaginateSlice.actions;
 
 export default PaginateSlice.reducer;

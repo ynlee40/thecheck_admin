@@ -551,9 +551,16 @@ input[type=text], input[type=password], input[type=tel], input[type=email], inpu
 		border-radius: 2px;
 		padding: 5px 5px 3px;
 		margin: 0 3px;
+		&:hover{
+			color: darken($point, 10);
+			border: 2px solid darken($point, 10);
+		}
 		&.on{
 			color:$white;
 			background: $point;
+			&:hover{
+				background: darken($point, 10);
+			}
 		}
 	}
 	.btn_prev,.btn_next{
@@ -573,6 +580,12 @@ input[type=text], input[type=password], input[type=tel], input[type=email], inpu
 			top:50%;
 			left:0;
 			margin-top: -5px;
+		}
+		&:hover{
+			border: none;
+			&:after{
+				@include bgSvg(fnIcoArrow2("rgb(37, 150, 173)"), no-repeat, 50% 50%, 11px);
+			}
 		}
 		&.dis{
 			&:after{
@@ -616,19 +629,19 @@ input[type=text], input[type=password], input[type=tel], input[type=email], inpu
 	&.type2{
 		height: 16px;
 		justify-content: center;
-		.btn{
+		button, a{
 			font-size: calcRem(10px);
-			// line-height: 15px;
+			line-height: 14px;
 			min-width: 16px;
 			height: 100%;
 			padding: 1px 3px 0;
-			box-sizing: border-box;
-			border: 1px solid #32b8d3;
+			border-width: 1px;
 		}
 		.btn_prev,.btn_next{
 			width: 11px;
 			height: 11px;
 			margin-top: -2px;
+			border: none;
 			&:after{
 				background-size: 11px 11px;
 			}
@@ -647,7 +660,6 @@ input[type=text], input[type=password], input[type=tel], input[type=email], inpu
 	border: 1px solid $point;
 	border-radius: 4px;
 	box-sizing: border-box;
-	transition: all 0.2s;
 	&:hover{
 		background: darken($point, 10);
 		border: 1px solid darken($point, 10);
@@ -670,10 +682,16 @@ input[type=text], input[type=password], input[type=tel], input[type=email], inpu
 			border: 1px solid darken($point, 10);
 		}
 	}
-	&.dis{
+	&.dis, &.gray{
 		background: $white;
-		color: #979797;
+		color: #B0B0B0;
 		border: 1px solid #B0B0B0;
+	}
+	&.gray{
+		&:hover{
+			color: darken(#979797, 10);
+			border: 1px solid darken(#979797, 10);
+		}
 	}
 	&.grean{
 		background: #05C9BF;
@@ -774,6 +792,10 @@ input[type=text], input[type=password], input[type=tel], input[type=email], inpu
 	font-size: calcRem(14px);
 	padding: 0 10px 0 38px;
 	@include bgSvg(fnIcoCreate("rgb(65,65,65)"), no-repeat, 0 50%, 24px);
+	&:hover{
+		color: #646464;
+		@include bgSvg(fnIcoCreate("rgb(100,100,100)"), no-repeat, 0 50%, 24px);
+	}
 }
 .btn_profile{
 	overflow: hidden;
@@ -1026,6 +1048,9 @@ input[type=text], input[type=password], input[type=tel], input[type=email], inpu
 			display: block;
 			@include ellipsis();
 			font-size: calcRem(14px);
+			&:hover{
+				color:#676767;
+			}
 		}
 	}
 	.btn_profile{
@@ -1039,8 +1064,16 @@ input[type=text], input[type=password], input[type=tel], input[type=email], inpu
 	.btn_txt{
 		font-size: calcRem(14px);
 		color: #979797;
+		&:hover{
+			color: darken(#979797, 20);
+		}
 		&+.btn_txt{
-			margin-left: 5px;
+			&:before{
+				content:"|";
+				display: inline-block;
+				vertical-align: middle;
+				margin: 0 5px;
+			}
 		}
 	}
 	&.type1, &.type2{
@@ -1060,6 +1093,7 @@ input[type=text], input[type=password], input[type=tel], input[type=email], inpu
 			}
 		}
 		.td_cont{
+			cursor: pointer;
 			h4{
 				font-size: calcRem(16px);
 				margin: 12px 0 10px;
@@ -1075,6 +1109,17 @@ input[type=text], input[type=password], input[type=tel], input[type=email], inpu
 				margin-bottom: 16px;
 				font-size: calcRem(14px);
 				@include ellipsis("multi",2);
+			}
+			&:hover{
+				.type{
+					color: darken($red, 20) !important;
+				}
+				.txt_point{
+					color: darken($point, 20) !important;
+				}
+				.desc{
+					color: #676767;
+				}
 			}
 		}
 		.td_date{
@@ -1107,6 +1152,11 @@ input[type=text], input[type=password], input[type=tel], input[type=email], inpu
 		.td_cont{
 			padding: 38px 15px 72px 0;
 			position: relative;
+			h4{
+				.txt_point:hover{
+					color: darken($point, 20) !important;
+				}
+			}
 			.desc{
 				height: 85px;
 				@include ellipsis("multi",4);

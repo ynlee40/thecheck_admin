@@ -99,7 +99,7 @@ const ProjectInfo = () => {
 					</tr>
 				</tbody>
 			</table>
-			{/* <h2>게시판</h2>
+			<h2>게시판</h2>
 			<table className="table">
 				<colgroup>
 					<col/>
@@ -115,33 +115,33 @@ const ProjectInfo = () => {
 				</thead>
 				<tbody>
 					<tr>
-						<td className="subj"><a href="/noti" target="_blank">공지사항</a></td>
+						<td className="subj"><a href="/board/noti" target="_blank">공지사항</a></td>
 						<td>21.08.04</td>
 						<td>21.08.09</td>
 					</tr>
 					<tr>
-						<td className="subj"><a href="/lab" target="_blank">자료실</a></td>
+						<td className="subj"><a href="/board/lab" target="_blank">자료실</a></td>
 						<td>21.08.04</td>
 						<td>21.08.09</td>
 					</tr>
 					<tr>
-						<td className="subj"><a href="/board" target="_blank">전체 게시판</a></td>
+						<td className="subj"><a href="/board/list" target="_blank">전체 게시판</a></td>
 						<td>21.08.05</td>
 						<td>21.08.09</td>
 					</tr>
 					<tr>
-						<td className="subj"><a href="/create" target="_blank">게시글 작성</a></td>
+						<td className="subj"><a href="/board/create" target="_blank">게시글 작성</a></td>
 						<td>21.08.05</td>
 						<td>-</td>
 					</tr>
 					<tr>
-						<td className="subj"><a href="/detail" target="_blank">게시글 상세페이지</a></td>
+						<td className="subj"><a href="/board/detail" target="_blank">게시글 상세페이지</a></td>
 						<td>21.08.09</td>
 						<td>-</td>
 					</tr>
 				</tbody>
 			</table>
-			<h2>ETC</h2>
+			{/* <h2>ETC</h2>
 			<table className="table">
 				<colgroup>
 					<col/>

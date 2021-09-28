@@ -4,7 +4,11 @@ import Layout from "views/layout/Layout";
 import LayoutIncentive from "views/layout/LayoutIncentive";
 import LayoutMember from "views/layout/LayoutMember";
 import ProjectInfo from "views/ProjectInfo";
-import Module from "views/Module"
+import Module from "views/Module";
+import List from "views/board/List";
+import Noti from "views/board/Noti";
+import Lab from "views/board/Lab";
+import Create from "views/board/Create";
 import { toggleAlert } from "features/common/AlertSlice";
 // import NotFound from "views/NotFound";
 
@@ -24,6 +28,10 @@ const Routes = () => {
 			<Route path="/layout" component={Layout}/>
 			<Route path="/layoutincentive" component={LayoutIncentive}/>
 			<Route path="/layoutmember" component={LayoutMember}/>
+			<Route path="/board/list" component={List}/>
+			<Route path="/board/noti" component={Noti}/>
+			<Route path="/board/lab" component={Lab}/>
+			<Route path="/board/create" component={Create}/>
 			<Route path="/*" render={onAlert}/>
 		</Switch>
 	);

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {setTitle} from "features/common/SettingSlice";
 import {setSummary} from "features/common/SummarySlick";
@@ -85,7 +85,7 @@ const Layout = () => {
 								{name: "옵션3"},
 								{name: "옵션4"},
 								{name: "옵션5"},
-							]} width="w120" />
+							]} classNm="w120" />
 						</div>
 						<div className="unit">
 							<strong>조건</strong>

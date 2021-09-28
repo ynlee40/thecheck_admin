@@ -1,14 +1,17 @@
 
-import React,{useEffect, useState} from 'react';
-import {useDispatch} from "react-redux";
+import React,{useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
 import {setTitle} from "features/common/SettingSlice";
 import {setSummary} from "features/common/SummarySlick";
+import {setPage} from "features/common/PaginateSlice";
 import Head from "components/common/Head";
 import DPickerInput from "components/module/DPickerInput";
 import Paginate from "components/common/Paginate";
+import {getPaginate} from "features/common/PaginateSlice";
 
 const LayoutMember = () => {
 	const dispatch = useDispatch();
+	const paginate = useSelector(getPaginate);
 	useEffect(()=>{
 		window.document.getElementsByTagName("body")[0].className = "p_member";
 		dispatch(setTitle("THE CHECK 회원")); // header 제목
@@ -30,6 +33,10 @@ const LayoutMember = () => {
 				},
 			],
 		})); 
+		dispatch(setPage({
+			info:"false"
+		})); 
+		console.log(paginate);
 	}, []);
 	return (
 		<section className="container">
@@ -167,7 +174,7 @@ const LayoutMember = () => {
 						</tr>
 					</tbody>
 				</table>
-				<Paginate info="false" />
+				<Paginate/>
 			</article>
 		</section>
 	);

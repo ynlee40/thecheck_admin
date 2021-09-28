@@ -2,7 +2,8 @@ import React from 'react';
 import {useSelector} from "react-redux";
 import {getPaginate} from "features/common/PaginateSlice";
 
-const Paging = ({info}) => {
+const Paging = () => {
+	// info = (type === "type2" ? "false" : info);
 	const paginate = useSelector(getPaginate);
 	const start = paginate.start;
 	const end = paginate.end;
@@ -19,12 +20,12 @@ const Paging = ({info}) => {
 					})
 				}
 			<button type="button" className="btn_next">다음</button>
-			{info !== "false" ? (
+			{ paginate.info !== "false" ? (
 				<div className="info">
-				<strong>항목 수</strong> <input type="number" className="ipt_page w30" defaultValue="20"/>
-				<span className="desc">총 1207 중 1- 20</span>
+					<strong>항목 수</strong> <input type="number" className="ipt_page w30" defaultValue="20"/>
+					<span className="desc">총 1207 중 1- 20</span>
 				</div>
-			) : ""}
+			) : "" }
 		</div>
 	);
 };
